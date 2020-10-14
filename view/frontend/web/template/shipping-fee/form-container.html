@@ -1,0 +1,33 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<div id="mageworx-shipping-fee-container" data-bind="blockLoader: isLoading, visible: shouldShow">
+
+    <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+
+    <div>
+        <form class="form"
+              data-bind="attr: {
+              'data-hasrequired': $t('* Required Fields'),
+              'id': 'mageworx-shipping-fee-form_' + method.method_code + '_' + method.carrier_code}">
+
+            <fieldset class="fieldset">
+                <!-- ko foreach: getRegion('mageworx-shipping-fee-form-fields') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </fieldset>
+
+            <!-- ko ifnot: applyOnClick -->
+                <button type="button" data-bind="click: onSubmit" class="action">
+                    <span data-bind="i18n: 'Apply Fee'"></span>
+                </button>
+            <!--/ko-->
+
+        </form>
+    </div>
+</div>

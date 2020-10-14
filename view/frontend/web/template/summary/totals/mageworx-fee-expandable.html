@@ -1,0 +1,41 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<!-- ko if: isDisplayed() -->
+    <dl class="collapsible" data-bind="css: {'collapsible--expanded': contentVisible}">
+        <dt class="collapsible__header" data-bind="click: toggleCollapsible" style="width: 100%;">
+            <div class="summary__field">
+                <div class="summary__cell">
+                    <p class="text text--variation-strong text--variation-distant" data-bind="text: title"></p>
+                </div>
+                <div class="summary__cell summary__cell--content-right">
+                    <p class="text text--variation-strong" data-bind="text: getValue(), attr:{'data-label': title}"></p>
+                </div>
+            </div>
+        </dt>
+        <dd class="collapsible__content">
+            <!-- ko foreach: getDetails() -->
+                <!-- ko foreach: options -->
+                    <div class="summary__field totals-tax-details">
+                        <!-- ko if: percent -->
+                            <div class="summary__cell">
+                                <p class="text text--variation-strong text--variation-subdued" data-bind="text: title + ' (' + $parents[1].formatToFixed(percent) + '%)'"></p>
+                            </div>
+                        <!-- /ko -->
+                        <!-- ko if: !percent -->
+                            <div class="summary__cell">
+                                <p class="text text--variation-strong text--variation-subdued" data-bind="text: title"></p>
+                            </div>
+                        <!-- /ko -->
+                        <div class="summary__cell summary__cell--content-right">
+                            <p class="text text--variation-subdued" data-bind="text: $parents[1].formatPrice(price)"></p>
+                        </div>
+                    </div>
+                <!-- /ko -->
+            <!-- /ko -->
+        </dd>
+    </dl>
+<!-- /ko -->

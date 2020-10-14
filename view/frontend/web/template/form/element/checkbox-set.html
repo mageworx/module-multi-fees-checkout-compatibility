@@ -1,0 +1,57 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<div visible="visible" css="$data.additionalClasses" attr="'data-config-scope': $data.scopeLabel, 'data-index': index">
+
+    <!--    <div class="admin__field admin__field-option" outereach="options">-->
+    <!--        <input class="checkbox__control"-->
+    <!--               type="checkbox"-->
+    <!--               ko-checked="$parent.value"-->
+    <!--               ko-disabled="$parent.disabled"-->
+    <!--               attr="-->
+    <!--                        id: ++ko.uid,-->
+    <!--                        value: value,-->
+    <!--                        type: $parent.multiple ? 'checkbox' : 'radio'"-->
+    <!--        >-->
+    <!--        <label class="checkbox__label" data-bind="attr: { for: ko.uid }">-->
+
+    <!--            <div class="checkbox__box">-->
+    <!--                <svg class="icon checkbox__icon">-->
+    <!--                    <use xlink:href="#icon&#45;&#45;check"></use>-->
+    <!--                </svg>-->
+    <!--            </div>&lt;!&ndash; ko if: element.label &ndash;&gt; &lt;!&ndash; ko text: element.label &ndash;&gt;&lt;!&ndash; /ko &ndash;&gt; &lt;!&ndash; /ko &ndash;&gt;-->
+
+    <!--        </label>-->
+    <!--    </div>-->
+
+    <div outereach="options" data-bind="css: { 'checkbox': $parent.multiple, 'radio': !$parent.multiple }">
+        <input class="checkbox__control"
+               ko-checked="$parent.value"
+               ko-disabled="$parent.disabled"
+               css="'radio__control': !$parent.multiple, 'checkbox__control': $parent.multiple"
+               attr="
+                    id: ++ko.uid,
+                    value: value,
+                    type: $parent.multiple ? 'checkbox' : 'radio'"/>
+
+        <label data-bind="attr: { for: ko.uid }, css: { 'checkbox__label': $parent.multiple, 'radio__label': !$parent.multiple }">
+            <div data-bind="css: { 'checkbox__box': $parent.multiple, 'radio__box': !$parent.multiple }">
+                <!-- ko if: $parent.multiple -->
+                    <svg class="icon checkbox__icon">
+                        <use xlink:href="#icon--check"></use>
+                    </svg>
+                <!-- /ko -->
+            </div><!-- ko text: label --><!-- /ko -->
+
+        </label>
+    </div>
+
+    <label class="admin__field-error" if="error" attr="for: uid" text="error"/>
+
+    <div class="admin__additional-info" if="$data.additionalInfo" html="$data.additionalInfo"></div>
+
+    <render args="$data.service.template" if="$data.hasService()"/>
+</div>

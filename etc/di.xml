@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Update component dynamically rendered during update -->
+    <type name="MageWorx\MultiFees\Block\LayoutProcessor\ShippingLayoutProcessor">
+        <plugin name="mageworx_checkout_update_components_shipping_fee" type="MageWorx\MultiFeesCheckout\Plugin\UpdateComponents"/>
+    </type>
+    <type name="MageWorx\MultiFees\Block\LayoutProcessor\PaymentLayoutProcessor">
+        <plugin name="mageworx_checkout_update_components_payment_fee" type="MageWorx\MultiFeesCheckout\Plugin\UpdateComponents"/>
+    </type>
+    <type name="MageWorx\MultiFees\Block\LayoutProcessor\CartLayoutProcessor">
+        <plugin name="mageworx_checkout_update_components_cart_fee" type="MageWorx\MultiFeesCheckout\Plugin\UpdateComponents"/>
+    </type>
+</config>

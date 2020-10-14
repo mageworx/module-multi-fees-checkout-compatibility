@@ -1,0 +1,33 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<div id="mageworx-payment-fee-container" data-bind="blockLoader: isLoading, visible: shouldShow">
+
+    <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+
+    <div>
+        <form class="form"
+              data-bind="attr: {
+              'data-hasrequired': $t('* Required Fields'),
+              'id': 'mageworx-payment-fee-form_' + $parent.index }">
+
+            <fieldset class="fieldset">
+                <!-- ko foreach: getRegion('mageworx-payment-fee-form-fields') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </fieldset>
+
+            <!-- ko ifnot: applyOnClick -->
+                <button type="button" data-bind="click: onSubmit" class="action">
+                    <span data-bind="i18n: 'Apply Payment Fee'"></span>
+                </button>
+            <!--/ko-->
+
+        </form>
+    </div>
+</div>

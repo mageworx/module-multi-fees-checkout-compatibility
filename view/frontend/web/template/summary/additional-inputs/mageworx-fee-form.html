@@ -1,0 +1,47 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<!-- ko if: isDisplayed() -->
+<div class="summary__cell">
+    <dl class="collapsible"
+        id="mageworx-fee-container"
+        data-bind="blockLoader: isLoading, css: {'collapsible--expanded': contentVisible}"
+        afterRender="onSubmit()"
+    >
+        <dt class="collapsible__header" data-bind="click: toggleCollapsible">
+            <span class="link link--variation-accent link--variation-strong"
+                  data-bind="i18n: 'Additional Fees'"></span>
+        </dt>
+
+        <dd class="collapsible__content">
+            <div class="form form--condensed">
+                <!-- ko foreach: getRegion('messages') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+
+                <form id="mageworx-fee-form" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+
+                    <fieldset class="fieldset">
+                        <!-- ko foreach: getRegion('mageworx-fee-form-fields') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        <!--/ko-->
+                    </fieldset>
+
+                    <!-- ko foreach: getRegion('messages') -->
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!--/ko-->
+
+                    <!-- ko ifnot: applyOnClick -->
+                        <button type="button" data-bind="click: onSubmit" class="action">
+                            <span data-bind="i18n: 'Apply Fee'"></span>
+                        </button>
+                    <!--/ko-->
+                </form>
+            </div>
+        </dd>
+    </dl>
+</div>
+<!-- /ko -->
