@@ -16,16 +16,18 @@
               'data-hasrequired': $t('* Required Fields'),
               'id': 'mageworx-shipping-fee-form_' + method.method_code + '_' + method.carrier_code}">
 
-            <fieldset class="fieldset">
+            <fieldset class="fieldset mw-fieldset">
                 <!-- ko foreach: getRegion('mageworx-shipping-fee-form-fields') -->
                     <!-- ko template: getTemplate() --><!-- /ko -->
                 <!--/ko-->
             </fieldset>
 
             <!-- ko ifnot: applyOnClick -->
-                <button type="button" data-bind="click: onSubmit" class="action">
-                    <span data-bind="i18n: 'Apply Fee'"></span>
-                </button>
+                <div class="mw-button-wrapper">
+                    <button type="button" data-bind="click: onSubmit" class="action button button--primary">
+                        <span data-bind="i18n: 'Apply Fee'"></span>
+                    </button>
+                </div>
             <!--/ko-->
 
         </form>
