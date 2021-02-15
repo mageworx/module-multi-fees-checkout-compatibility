@@ -24,7 +24,7 @@
 
                 <form id="mageworx-fee-form" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
 
-                    <fieldset class="fieldset">
+                    <fieldset class="fieldset mw-fieldset">
                         <!-- ko foreach: getRegion('mageworx-fee-form-fields') -->
                             <!-- ko template: getTemplate() --><!-- /ko -->
                         <!--/ko-->
@@ -35,9 +35,11 @@
                     <!--/ko-->
 
                     <!-- ko ifnot: applyOnClick -->
-                        <button type="button" data-bind="click: onSubmit" class="action">
+                    <div class="mw-button-wrapper">
+                        <button type="button" data-bind="click: onSubmit" class="action button button--primary">
                             <span data-bind="i18n: 'Apply Fee'"></span>
                         </button>
+                    </div>
                     <!--/ko-->
                 </form>
             </div>
